@@ -1,68 +1,10 @@
 import { useState } from "react";
-
-// Project data stored in an array for easier management. It is easier passing them as props to the ProjectCard component.
-const projects = [
-  {
-    name: "CredAxis",
-    tag: "Featured",
-    description:
-      "An alternative credit engine — real user input evaluated into a real, conditional outcome.",
-    before: "/screenshots/cred-hero.jpeg",
-    after: "/screenshots/cred-signup.jpeg",
-    live: "https://cred-axis-beryl.vercel.app/",
-    code: "#",
-  },
-  {
-    name: "IP Address Tracker",
-    description:
-      "Enter any IP or domain, get its real location, timezone, and ISP back — live lookup, not mock data.",
-    before: "/screenshots/ip-tracker-before.jpeg",
-    after: "/screenshots/ip-tracker-after.jpeg",
-    live: "https://ip-address-trackernetlify.netlify.app/",
-    code: "#",
-  },
-  {
-    name: "Product List & Cart",
-    description:
-      "Add items, watch quantities and totals update in real time — real state management, not static pricing.",
-    before: "/screenshots/cart-empty.jpeg",
-    after: "/screenshots/cart-filled.jpeg",
-    live: "https://product-list-cart-74av.vercel.app/",
-    code: "#",
-  },
-  {
-    name: "Web Calculator",
-    description:
-      "Handles real arithmetic, including edge cases like division errors.",
-    before: "/screenshots/calc-before.jpeg",
-    after: "/screenshots/calc-after.jpeg",
-    live: "https://mycalc-a.netlify.app/",
-    code: "#",
-  },
-  {
-    name: "Todo App — Clarify",
-    description:
-      "Add, check off, and delete tasks — real state changes, not a static list.",
-    before: "/screenshots/todo-unchecked.jpeg",
-    after: "/screenshots/todo-checked.jpeg",
-    live: "https://clarify-todo-app.vercel.app/",
-    code: "#",
-  },
-  {
-    name: "Auto Company Website",
-    description:
-      "A fully responsive marketing site — supporting visual work, not logic-focused.",
-    before: "/screenshots/auto-home.jpeg",
-    after: "/screenshots/auto-carShowcase.jpeg",
-    live: "https://automobile-website-net.netlify.app/",
-    code: "#",
-  },
-];
+import { Link } from "react-router-dom";
+import projects from "../data/projects";
 
 // ProjectCard component renders individual project cards. It receives a project object as a prop and displays its details.
 
 // onImageClick lets the Work know which image was clicked, so it can show it enlarged.
-
 function ProjectCard({ project, onImageClick }) {
   return (
     <div className="border border-[#141414]/10 rounded-lg overflow-hidden bg-white flex flex-col">
@@ -78,9 +20,11 @@ function ProjectCard({ project, onImageClick }) {
             {project.tag}
           </p>
         )}
-        <h3 className="font-['Sora'] font-semibold text-xl text-[#141414]">
-          {project.name}
-        </h3>
+        <Link to={`/work/${project.slug}`}>
+          <h3 className="font-['Sora'] font-semibold text-xl text-[#141414] hover:text-[#801A86]">
+            {project.name}
+          </h3>
+        </Link>
         <p className="font-['IBM_Plex_Sans'] text-[#141414] text-sm mt-2 flex-1">
           {project.description}
         </p>
@@ -108,10 +52,11 @@ function ProjectCard({ project, onImageClick }) {
 }
 
 // The Work component renders the Work page, displaying a list of project cards.
-// LargeImg state variable is just tracking which image is currently enlarged.
 
+// LargeImg state variable is just tracking which image is currently enlarged.
 function Work() {
   const [largeImg, setLargeImg] = useState(null);
+
   return (
     <div className="bg-[#F5F5F5] min-h-screen px-6 py-16">
       <div className="max-w-5xl mx-auto">
@@ -131,6 +76,8 @@ function Work() {
           ))}
         </div>
       </div>
+
+      {/* short circuit the large image display */}
 
       {largeImg && (
         <div
