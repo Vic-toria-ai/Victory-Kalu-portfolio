@@ -24,13 +24,7 @@ function Nav() {
           VICTORY KALU
         </span>
         {/* nav links. */}
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-          }}
-        >
+        <div>
           <NavLink to="/" style={navStyle}>
             Home
           </NavLink>
