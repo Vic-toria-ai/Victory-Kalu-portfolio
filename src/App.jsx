@@ -1,5 +1,5 @@
 import React from "react";
-import Nav from "./component/Nav";
+import Nav from "./Component/Nav";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
