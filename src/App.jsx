@@ -1,9 +1,9 @@
 import React from "react";
-import Nav from "./components/Nav";
-import Home from "./components/Home";
-import About from "./components/About";
-import Contact from "./components/Contact";
-import Work from "./components/Work";
+import Nav from "./component/Nav";
+import Home from "./pages/Home";
+import About from "./pages/About";
+import Contact from "./pages/Contact";
+import Work from "./pages/Work";
 import { Routes } from "react-router-dom";
 import { Route } from "react-router-dom";
 
